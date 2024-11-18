@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* LiveActivityPOCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* LiveActivityPOCTests.m */; };
+		067FEFC82CEAFD2200B46AF0 /* FoodDeliveryTrackerModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FEFC72CEAFD2200B46AF0 /* FoodDeliveryTrackerModule.swift */; };
+		067FEFC92CEAFD2200B46AF0 /* FoodDeliveryTrackerModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FEFC72CEAFD2200B46AF0 /* FoodDeliveryTrackerModule.swift */; };
 		06CC013F2CE9211400358606 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CC013E2CE9211400358606 /* WidgetKit.framework */; };
 		06CC01412CE9211400358606 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CC01402CE9211400358606 /* SwiftUI.framework */; };
 		06CC01442CE9211400358606 /* FoodDeliveryTrackerBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CC01432CE9211400358606 /* FoodDeliveryTrackerBundle.swift */; };
@@ -60,6 +62,8 @@
 		00E356EE1AD99517003FC87E /* LiveActivityPOCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiveActivityPOCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* LiveActivityPOCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiveActivityPOCTests.m; sourceTree = "<group>"; };
+		067FEFC62CEAFD2200B46AF0 /* LiveActivityPOC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiveActivityPOC-Bridging-Header.h"; sourceTree = "<group>"; };
+		067FEFC72CEAFD2200B46AF0 /* FoodDeliveryTrackerModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDeliveryTrackerModule.swift; sourceTree = "<group>"; };
 		06CC013D2CE9211400358606 /* FoodDeliveryTrackerExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FoodDeliveryTrackerExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		06CC013E2CE9211400358606 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		06CC01402CE9211400358606 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -142,6 +146,8 @@
 				06CC01452CE9211400358606 /* FoodDeliveryTrackerLiveActivity.swift */,
 				06CC01492CE9211500358606 /* Assets.xcassets */,
 				06CC014B2CE9211500358606 /* Info.plist */,
+				067FEFC72CEAFD2200B46AF0 /* FoodDeliveryTrackerModule.swift */,
+				067FEFC62CEAFD2200B46AF0 /* LiveActivityPOC-Bridging-Header.h */,
 			);
 			path = FoodDeliveryTracker;
 			sourceTree = "<group>";
@@ -297,7 +303,7 @@
 						CreatedOnToolsVersion = 15.2;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1520;
 					};
 				};
 			};
@@ -515,6 +521,7 @@
 				06CC01572CE921B300358606 /* FoodDeliveryTrackerAttributes.swift in Sources */,
 				06CC01582CE921B300358606 /* LockScreenView.swift in Sources */,
 				06CC01462CE9211400358606 /* FoodDeliveryTrackerLiveActivity.swift in Sources */,
+				067FEFC92CEAFD2200B46AF0 /* FoodDeliveryTrackerModule.swift in Sources */,
 				06CC01562CE921B300358606 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -524,6 +531,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				067FEFC82CEAFD2200B46AF0 /* FoodDeliveryTrackerModule.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -548,6 +556,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-LiveActivityPOC-LiveActivityPOCTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -575,6 +584,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-LiveActivityPOC-LiveActivityPOCTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = LiveActivityPOCTests/Info.plist;
@@ -701,6 +711,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = LiveActivityPOC;
+				SWIFT_OBJC_BRIDGING_HEADER = "FoodDeliveryTracker/LiveActivityPOC-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -729,6 +740,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = LiveActivityPOC;
+				SWIFT_OBJC_BRIDGING_HEADER = "FoodDeliveryTracker/LiveActivityPOC-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
