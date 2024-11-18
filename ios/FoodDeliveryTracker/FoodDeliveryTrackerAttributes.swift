@@ -23,5 +23,6 @@ struct FoodDeliveryTrackerAttributes: ActivityAttributes {
 
     // Fixed non-changing properties about your activity go here!
     var noOfItems: Int;
+    var recordID: Int;
 }
 

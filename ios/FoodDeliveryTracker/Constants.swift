@@ -8,7 +8,8 @@
 import Foundation
 import SwiftUI
 
-let RiderImageUrl = "rider"
+let RiderImageUrl = "rider";
+let RECORD_ID = 1;
 
 extension Color {
     init(hex: Int, opacity: Double = 1) {
