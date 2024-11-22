@@ -22,6 +22,13 @@ class FoodDeliveryTrackerModule: NSObject {
   static func areActivitiesEnabled() -> Bool {
       return ActivityAuthorizationInfo().areActivitiesEnabled
   }
+  
+  @objc
+  func constantsToExport() -> [AnyHashable : Any]! {
+    return [
+      "recordID": RECORD_ID
+    ]
+  }
     
   static var isAtLeastIOS16_1: Bool {
       if #available(iOS 16.1, *) {
@@ -43,9 +50,19 @@ class FoodDeliveryTrackerModule: NSObject {
       Activity<FoodDeliveryTrackerAttributes>.activities.first(where: {$0.attributes.recordID == recordID})
   }
   
+  @objc
+  func isLiveActivityActive(_ callback: RCTResponseSenderBlock) {
+    // Check if there's at least one active activity in the activities array
+    let isActive = Activity<FoodDeliveryTrackerAttributes>.activities.contains { activity in
+      return activity.activityState == .active
+    }
+    callback([isActive])
+  }
+
+  
   //method exported to react native
   @objc
-  func startLiveActivity(_ riderName: Double, riderRating: Double,  status: Double, noOfItems: Int) -> Void {
+  func startLiveActivity(_ riderName: String, riderRating: Float,  status: String, noOfItems: Int) -> Void {
     if (!FoodDeliveryTrackerModule.areActivitiesEnabled()) {
           // User disabled Live Activities for the app, nothing to do
           return
@@ -57,7 +74,7 @@ class FoodDeliveryTrackerModule: NSObject {
     // Preparing data for the Live Activity
     
     // Store recordId to identify existence or access unique live activity later
-    let activityAttributes = FoodDeliveryTrackerAttributes(recordID: RECORD_ID, noOfItems: noOfItems);
+    let activityAttributes = FoodDeliveryTrackerAttributes(noOfItems: noOfItems, recordID: RECORD_ID);
     let riderInfo = FoodDeliveryTrackerAttributes.ContentState.RiderInfo(
       riderName: riderName,
       riderRating: riderRating
@@ -77,13 +94,13 @@ class FoodDeliveryTrackerModule: NSObject {
       }
         } catch (let error) {
           // Handle errors
-          print("Error requesting Live Activity \(error.localizedDescription).")
+          print("Error requesting Live Activity \(error).")
         }
   }
   
   //method exported to react native
   @objc
-  func updateLiveActivity(_ riderName: Double, riderRating: Double,  status: Double,  recordId: Int) -> Void {
+  func updateLiveActivity(_ riderName: String, riderRating: Float,  status: String,  recordId: Int) -> Void {
     if (!FoodDeliveryTrackerModule.areActivitiesEnabled()) {
           // User disabled Live Activities for the app, nothing to do
           return
@@ -120,7 +137,7 @@ class FoodDeliveryTrackerModule: NSObject {
   }
 
   @objc
-  func stopLiveActivity(_ isImmediateDismissal: Bool, riderName: Double, riderRating: Double,  status: Double,  recordId: Int) -> Void {
+  func stopLiveActivity(_ isImmediateDismissal: Bool, riderName: String, riderRating: Float,  status: String,  recordId: Int) -> Void {
     // A task is a unit of work that can run concurrently in a lightweight thread, managed by the Swift runtime
     // It helps to avoid blocking the main thread
     if (!FoodDeliveryTrackerModule.areActivitiesEnabled()) {
