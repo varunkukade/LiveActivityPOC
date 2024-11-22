@@ -58,11 +58,78 @@ class FoodDeliveryTrackerModule: NSObject {
     }
     callback([isActive])
   }
+  
+  static func ObservePushTokenUpdates() {
+    guard let liveActivity = getLiveActivity(for: RECORD_ID) else{
+        return
+    }
+    Task{
+       for await pushToken in liveActivity.pushTokenUpdates {
+         let pushTokenString = pushToken.reduce("") {
+           $0 + String(format: "%02x", $1)
+         }
+         let authToken = liveActivity.attributes.authToken
+         
+         // Create the JSON body
+         let jsonBody: [String: String] = ["token": pushTokenString]
+         let httpBody: Data?
+
+         do {
+             httpBody = try JSONSerialization.data(withJSONObject: jsonBody)
+         } catch {
+             print("Error converting JSON to Data:", error)
+             return
+         }
+
+         // Optional binding before calling the API
+         if let httpBody = httpBody {
+             NetworkService.callAPI(url: "", httpMethod: "POST", httpBody: httpBody, authToken: authToken)
+         } else {
+             print("httpBody is nil, not calling the API.")
+         }
+       }
+     }
+  }
+  
+  static func ObserveLiveActivityState() {
+    guard let liveActivity = getLiveActivity(for: RECORD_ID) else{
+        return
+    }
+    Task{
+       for await activityState in liveActivity.activityStateUpdates {
+         switch activityState {
+             case .dismissed:
+                     let authToken = liveActivity.attributes.authToken;
+                     
+                     // Create the JSON body
+                     var someValue = 2
+                     let jsonBody: [String: Int] = ["some_property": someValue]
+                     let httpBody: Data?
+
+                     do {
+                         httpBody = try JSONSerialization.data(withJSONObject: jsonBody)
+                     } catch {
+                         print("Error converting JSON to Data:", error)
+                         return
+                     }
+
+                     // Optional binding before calling the API
+                     if let httpBody = httpBody {
+                         NetworkService.callAPI(url: "", httpMethod: "DELETE", httpBody: httpBody, authToken: authToken)
+                     } else {
+                         print("httpBody is nil, not calling the API.")
+                     }
+             default:
+                 print("Value is something else")
+             }
+       }
+     }
+  }
 
   
   //method exported to react native
   @objc
-  func startLiveActivity(_ riderName: String, riderRating: Float,  status: String, noOfItems: Int) -> Void {
+  func startLiveActivity(_ riderName: String, riderRating: Float,  status: String, noOfItems: Int, authToken: String) -> Void {
     if (!FoodDeliveryTrackerModule.areActivitiesEnabled()) {
           // User disabled Live Activities for the app, nothing to do
           return
@@ -74,7 +141,7 @@ class FoodDeliveryTrackerModule: NSObject {
     // Preparing data for the Live Activity
     
     // Store recordId to identify existence or access unique live activity later
-    let activityAttributes = FoodDeliveryTrackerAttributes(noOfItems: noOfItems, recordID: RECORD_ID);
+    let activityAttributes = FoodDeliveryTrackerAttributes(noOfItems: noOfItems, recordID: RECORD_ID, authToken: authToken);
     let riderInfo = FoodDeliveryTrackerAttributes.ContentState.RiderInfo(
       riderName: riderName,
       riderRating: riderRating
@@ -92,6 +159,8 @@ class FoodDeliveryTrackerModule: NSObject {
         //For IOS 16.1: Request to start a new Live Activity
         let _ = try Activity.request(attributes: activityAttributes, contentState: contentState, pushType: .token)
       }
+      FoodDeliveryTrackerModule.ObservePushTokenUpdates();
+      FoodDeliveryTrackerModule.ObserveLiveActivityState();
         } catch (let error) {
           // Handle errors
           print("Error requesting Live Activity \(error).")

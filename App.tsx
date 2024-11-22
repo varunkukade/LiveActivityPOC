@@ -19,11 +19,13 @@ function App(): JSX.Element {
   };
 
   const onStart = () => {
+    const authToken = '';
     NativeModules.FoodDeliveryTrackerModule.startLiveActivity(
       'Jaun C.',
       4.7,
       '8 min',
       3,
+      authToken,
     );
   };
 

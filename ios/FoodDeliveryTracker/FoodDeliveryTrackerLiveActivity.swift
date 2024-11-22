@@ -100,7 +100,7 @@ struct FoodDeliveryTrackerLiveActivity: Widget {
 
 extension FoodDeliveryTrackerAttributes {
     fileprivate static var preview: FoodDeliveryTrackerAttributes {
-      FoodDeliveryTrackerAttributes(noOfItems: 6, recordID: RECORD_ID)
+      FoodDeliveryTrackerAttributes(noOfItems: 6, recordID: RECORD_ID, authToken: "eta3b8ey32")
     }
 }
 

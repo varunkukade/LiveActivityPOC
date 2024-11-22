@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* LiveActivityPOCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* LiveActivityPOCTests.m */; };
+		063933422CF05F82009D26D8 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063933412CF05F82009D26D8 /* NetworkService.swift */; };
+		063933432CF05F82009D26D8 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063933412CF05F82009D26D8 /* NetworkService.swift */; };
 		067FEFC92CEAFD2200B46AF0 /* FoodDeliveryTrackerModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FEFC72CEAFD2200B46AF0 /* FoodDeliveryTrackerModule.swift */; };
 		06932E3E2CEE4BD10078B685 /* FoodDeliveryTrackerModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067FEFC72CEAFD2200B46AF0 /* FoodDeliveryTrackerModule.swift */; };
 		06932E3F2CEE4DA60078B685 /* FoodDeliveryTrackerAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CC01542CE921B300358606 /* FoodDeliveryTrackerAttributes.swift */; };
@@ -65,6 +67,7 @@
 		00E356EE1AD99517003FC87E /* LiveActivityPOCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiveActivityPOCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* LiveActivityPOCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiveActivityPOCTests.m; sourceTree = "<group>"; };
+		063933412CF05F82009D26D8 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		067FEFC62CEAFD2200B46AF0 /* LiveActivityPOC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiveActivityPOC-Bridging-Header.h"; sourceTree = "<group>"; };
 		067FEFC72CEAFD2200B46AF0 /* FoodDeliveryTrackerModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDeliveryTrackerModule.swift; sourceTree = "<group>"; };
 		06932E412CEE4EE00078B685 /* FoodDeliveryTrackerModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodDeliveryTrackerModule.m; sourceTree = "<group>"; };
@@ -154,6 +157,7 @@
 				067FEFC72CEAFD2200B46AF0 /* FoodDeliveryTrackerModule.swift */,
 				067FEFC62CEAFD2200B46AF0 /* LiveActivityPOC-Bridging-Header.h */,
 				06932E412CEE4EE00078B685 /* FoodDeliveryTrackerModule.m */,
+				063933412CF05F82009D26D8 /* NetworkService.swift */,
 			);
 			path = FoodDeliveryTracker;
 			sourceTree = "<group>";
@@ -530,6 +534,7 @@
 				06CC01462CE9211400358606 /* FoodDeliveryTrackerLiveActivity.swift in Sources */,
 				067FEFC92CEAFD2200B46AF0 /* FoodDeliveryTrackerModule.swift in Sources */,
 				06CC01562CE921B300358606 /* Constants.swift in Sources */,
+				063933432CF05F82009D26D8 /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,6 +548,7 @@
 				06932E3E2CEE4BD10078B685 /* FoodDeliveryTrackerModule.swift in Sources */,
 				06932E422CEE4EE00078B685 /* FoodDeliveryTrackerModule.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				063933422CF05F82009D26D8 /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

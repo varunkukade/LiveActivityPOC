@@ -20,7 +20,8 @@
 RCT_EXTERN_METHOD(startLiveActivity:(nonnull NSString *)riderName
                   riderRating:(nonnull float *)riderRating
                   status:(nonnull NSString *)status
-                  noOfItems:(NSInteger)noOfItems)
+                  noOfItems:(NSInteger)noOfItems
+                  authToken:(nonnull NSString *)authToken)
 RCT_EXTERN_METHOD(updateLiveActivity:(nonnull NSString *)riderName
                   riderRating:(nonnull float *)riderRating
                   status:(nonnull NSString *)status
